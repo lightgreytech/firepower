@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-File: getAllDevices.py
+File: getNetObjs.py
 Inputs: 
     Username
     Password
@@ -11,6 +11,7 @@ Outputs:
 To use this file as a standalone script, the username, password, & FMC IP
 will need to be passed in as command-line arguments.
 """
+
 # include the necessary modules
 import argparse
 import json
@@ -35,30 +36,23 @@ if __name__ == "__main__":
     p = args.password
     ip = args.ip_address
     path = "/api/fmc_platform/v1/auth/generatetoken"
-    header = {} # don't need to instantiate this here, but doing so for clarity
-
     # call the token generating function and populate our header
     header = token.get_token(ip, path, u, p)
 
-    # we need to update our path to account for the domain UUID as follows
-    path = f"/api/fmc_config/v1/domain/{header['DOMAIN_UUID']}/devices/devicerecords"
-    # now to try and GET our list of network objects
+    # we need to update our path to account for the domain UUID and Object_ID as follows
+    path = f"/api/fmc_config/v1/domain/{header['DOMAIN_UUID']}/object/networks/005056BF-7B88-0ed3-0000-012885446194"
+    
+    
+    # now to try and DELETE our network from the list of network objects
     try:
-        r = requests.get(f"https://{ip}/{path}", headers=header, 
-            verify=False) # always verify the SSL cert in prod!
+        r = requests.delete(f"https://{ip}/{path}", headers=header, verify=False)
+
+        print(r.request.body)
+        print("Headers: " + str(r.headers) + "\n")
+        print("Text: " + str(r.text) + "\n")
+        print("Status Code: " + str(r.status_code))
+
     except requests.exceptions.HTTPError as errh:
         raise SystemExit(errh)
     except requests.exceptions.RequestException as err:
-        raise SystemExit(err)
-
-    # if it worked, we will have received a list of network objects!
-    #output the result to a file in a different folder
-    output_path = './outputs/'
-    try:
-        if not os.path.exists(output_path): #
-            os.mkdir(output_path)
-        with open('outputs/getAllDevices.txt', 'w') as f:
-            print(json.dumps(r.json(), indent=2), file=f)
-            # print(json.dumps(r.json(r), indent=2))
-    except Exception as err:
         raise SystemExit(err)

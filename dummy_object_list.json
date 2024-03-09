@@ -1,0 +1,16 @@
+[
+   {
+       "name": "net_test1",
+       "value": "2.0.0.0/24",
+       "overridable": false,
+       "description": "Network obj 1",
+       "type": "Network"
+   },
+   {
+       "name": "net_test2",
+       "value": "2.2.0.0/24",
+       "overridable": false,
+       "description": "Network obj 2",
+       "type": "Network"
+   }
+]

@@ -20,6 +20,7 @@
             python requestToken.py <username> <password> <ip_address>
             python getNetObjs.py <username> <password> <ip_address>
             python getAllDevices.py <username> <password> <ip_address>
+            python postNetObjs.py <username> <password> <ip_address> <csv_filename> #bulk posts requires it
 
 
 
