@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 certifi==2024.2.2
 charset-normalizer==3.3.2
 idna==3.6
@@ -5,3 +6,17 @@ jsons==1.6.3
 requests==2.31.0
 typish==1.9.3
 urllib3==2.2.1
+=======
+certifi
+cffi
+chardet
+cryptography
+graphviz
+idna
+pycparser
+pyOpenSSL
+PyYAML
+requests
+six
+urllib3
+>>>>>>> adcd71e (token, Objects request and folder auto-creation working fine)
