@@ -1,0 +1,25 @@
+- For FMC APIs you need to create a user in FMC dashboard to access the API:
+    - Username
+    - Password
+    - Get the DOMAIN_UUID
+
+- 3 ways to consume FMC Rest APIs
+    (A) FMC API EXPLORER
+        Navigating to:
+            https://<ipaddress>/api/api-explorer
+
+    (B) POSTMAN APPLICATION
+
+    (C) PYTHON SCRIPTS
+        - first generate a token using *POST* request
+            - the request contains your username and password created in FMC dashboard
+        - you can also generate a REFRESH TOKEN
+        - subsequent calls are made with the tokens.
+        
+        RUN CLI SCRIPTS IN THIS REPO
+            python requestToken.py <username> <password> <ip_address>
+            python getNetObjs.py <username> <password> <ip_address>
+            python getAllDevices.py <username> <password> <ip_address>
+
+
+

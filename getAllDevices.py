@@ -42,8 +42,7 @@ if __name__ == "__main__":
     header = token.get_token(ip, path, u, p)
 
     # we need to update our path to account for the domain UUID as follows
-    path = f"/api/fmc_config/v1/domain/{header['DOMAIN_UUID']}/object/networks"
-
+    path = f"/api/fmc_config/v1/domain/{header['DOMAIN_UUID']}/devices/devicerecords"
     # now to try and GET our list of network objects
     try:
         r = requests.get(f"https://{ip}/{path}", headers=header, 
@@ -59,7 +58,7 @@ if __name__ == "__main__":
     try:
         if not os.path.exists(output_path): #
             os.mkdir(output_path)
-        with open('outputs/getNetObjs.txt', 'w') as f:
+        with open('outputs/getAllDevices.txt', 'w') as f:
             print(json.dumps(r.json(), indent=2), file=f)
             # print(json.dumps(r.json(r), indent=2))
     except Exception as err:

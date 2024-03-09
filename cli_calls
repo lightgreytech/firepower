@@ -1,2 +1,0 @@
-python getNetObjs.py <username> <password> <ip_address>
-python requestToken.py <username> <password> <ip_address>
