@@ -12,5 +12,12 @@
        "overridable": false,
        "description": "Network obj 2",
        "type": "Network"
-   }
+   },
+   {
+    "name": "random_network",
+    "value": "3.3.0.0/22",
+    "overridable": false,
+    "description": "Random Host",
+    "type": "Network"
+}
 ]

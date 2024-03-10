@@ -40,15 +40,16 @@ if __name__ == "__main__":
     header = token.get_token(ip, path, u, p)
 
     # we need to update our path to account for the domain UUID and Object_ID as follows
-    path = f"/api/fmc_config/v1/domain/{header['DOMAIN_UUID']}/object/networks/005056BF-7B88-0ed3-0000-012885446194"
-    
+    # path = f"/api/fmc_config/v1/domain/{header['DOMAIN_UUID']}/object/networks/<OBJECT_ID>"
+    path = f"/api/fmc_config/v1/domain/{header['DOMAIN_UUID']}/object/networks/005056BF-7B88-0ed3-0000-012885587373"
+
+ 
     
     # now to try and DELETE our network from the list of network objects
     try:
         r = requests.delete(f"https://{ip}/{path}", headers=header, verify=False)
 
         print(r.request.body)
-        print("Headers: " + str(r.headers) + "\n")
         print("Text: " + str(r.text) + "\n")
         print("Status Code: " + str(r.status_code))
 

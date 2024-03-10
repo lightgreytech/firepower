@@ -41,9 +41,11 @@ if __name__ == "__main__":
     # call the token generating function and populate our header
     header = token.get_token(ip, path, u, p)
 
-    # we need to update our path to account for the domain UUID as follows
+    # # we need to update our path to account for the domain UUID as follows
+    # Next line gets the first 25 objects (its the default for FMC)
     path = f"/api/fmc_config/v1/domain/{header['DOMAIN_UUID']}/object/networks"
-
+    # #FILTER: Get the first 100 OBJECTS
+    # path = f"/api/fmc_config/v1/domain/{header['DOMAIN_UUID']}/object/networks?offset=0&limit=100"
     # now to try and GET our list of network objects
     try:
         r = requests.get(f"https://{ip}/{path}", headers=header, 
